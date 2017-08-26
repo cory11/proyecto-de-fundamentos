@@ -1,5 +1,7 @@
 #pragma once
 #include <SDL/SDL.h>
+#include <glew/glew.h>
+
 enum class GameState {
 
 	PLAY, EXIT
