@@ -1,16 +1,21 @@
 #include "GLS_Program.h"
 #include <fstream>
 #include <vector>
+#include <iostream>
 #include "Error.h"
+
+using namespace std;
 
 void GLS_Program::compileShader(const string& shaderpath, GLuint id) {
 	string fileContent = "";
 	string line = "";
 	ifstream shaderFile(shaderpath);
-	if (shaderFile.fail()) {}
+	if (shaderFile.fail()) {
+		fatalError("Could not open " + shaderpath);
+	}
 
 	while (getline(shaderFile, line)) {
-		fileContent += line + "/n";
+		fileContent += line + "\n";
 	}
 	shaderFile.close();
 	const char* contents = fileContent.c_str();
@@ -35,6 +40,8 @@ void GLS_Program::compileShader(const string& shaderpath, GLuint id) {
 	}
 }
 
+
+
 void GLS_Program::compileShaders(const string& vertexShaderFilePath, const string& fragmentShaderFilePath) {
 	_programID = glCreateProgram();
 
@@ -52,6 +59,8 @@ void GLS_Program::compileShaders(const string& vertexShaderFilePath, const strin
 	compileShader(fragmentShaderFilePath, _fragmentShaderID);
 
 }
+
+
 
 void GLS_Program::linkShader() {
 	glAttachShader(_programID, _vertexShaderID);
@@ -84,13 +93,16 @@ void GLS_Program::linkShader() {
 	//Always detach shaders after a successful link.
 	glDetachShader(_programID, _vertexShaderID);
 	glDetachShader(_programID, _fragmentShaderID);
+	
 }
 
-void GLS_Program::addAttribute() {
-
+void GLS_Program::addAttribute(const string atributeName) {
+	glBindAttribLocation(_programID, _numAttribute++, atributeName.c_str());
 }
 
 void GLS_Program::use() {
+
+	glUseProgram(_programID);
 	for (int i = 0; i < _numAttribute; i++)
 	{
 		glEnableVertexAttribArray(i);
@@ -98,6 +110,7 @@ void GLS_Program::use() {
 }
 
 void GLS_Program::unuse() {
+	glUseProgram(0);
 	for (int i = 0; i < _numAttribute; i++)
 	{
 		glDisableVertexAttribArray(i);
@@ -111,4 +124,14 @@ GLS_Program::GLS_Program(): _programID(0), _fragmentShaderID(0),_vertexShaderID(
 
 GLS_Program::~GLS_Program()
 {
+}
+
+GLuint GLS_Program::getUniformLocation(const string &name) {
+	GLuint location = glGetUniformLocation(_programID, name.c_str());
+
+	if (location == GL_INVALID_INDEX) {
+		fatalError("Uniform " + name + " was not found");
+	}
+
+	return location;
 }

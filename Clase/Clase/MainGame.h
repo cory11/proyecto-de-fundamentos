@@ -14,6 +14,7 @@ class MainGame
 private:
 	int _width;
 	int _height;
+	float _time;
 	Sprite _sprite;
 	void init();
 	GLS_Program _program;

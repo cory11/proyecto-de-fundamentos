@@ -1,8 +1,4 @@
 ﻿  MainGame.cpp
-  GLS_Program.cpp
-  Generating Code...
-  Compiling...
-  main.cpp
-  Generating Code...
-  Clase.vcxproj -> C:\Users\Proyecto\fundamento\proyecto-de-fundamentos\Clase\Debug\Clase.exe
-  Clase.vcxproj -> C:\Users\Proyecto\fundamento\proyecto-de-fundamentos\Clase\Debug\Clase.pdb (Partial PDB)
+c:\users\proyecto\fundamentos\proyecto-de-fundamentos\clase\clase\maingame.cpp(56): warning C4305: '+=': truncation from 'double' to 'float'
+  Clase.vcxproj -> C:\Users\Proyecto\fundamentos\proyecto-de-fundamentos\Clase\Debug\Clase.exe
+  Clase.vcxproj -> C:\Users\Proyecto\fundamentos\proyecto-de-fundamentos\Clase\Debug\Clase.pdb (Partial PDB)
