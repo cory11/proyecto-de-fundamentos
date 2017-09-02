@@ -1,6 +1,9 @@
 #pragma once
 #include <SDL/SDL.h>
 #include <glew/glew.h>
+#include "Sprite.h"
+#include "GLS_Program.h"
+
 
 enum class GameState {
 
@@ -11,7 +14,10 @@ class MainGame
 private:
 	int _width;
 	int _height;
+	Sprite _sprite;
 	void init();
+	GLS_Program _program;
+	void initShaders();
 	SDL_Window* _window;
 	void processInput();
 public:

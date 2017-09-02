@@ -1,5 +1,6 @@
 #include "MainGame.h"
 #include <iostream>
+#include "Error.h"
 using namespace std;
 
 
@@ -14,7 +15,7 @@ void MainGame::init() {
 
 
 	if (_window == nullptr) {
-	
+		fatalError("SDL_Window was not loaded");
 	}
 
 
@@ -22,11 +23,16 @@ void MainGame::init() {
 	GLenum error = glewInit();
 
 	if (error != GLEW_OK) {
-
+		fatalError("GLEW was not loaded");
 	}
 
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
+	initShaders();
+}
+
+void MainGame::initShaders(){
+	
 }
 
 void MainGame::update(){
@@ -39,6 +45,8 @@ void MainGame::update(){
 void MainGame::draw(){
 	glClearDepth(1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	_sprite.draw();
+
 	//draw elements
 	SDL_GL_SwapWindow(_window);
 }
@@ -60,6 +68,7 @@ void MainGame::processInput() {
 void MainGame::run() {
 	init();
 	update();	
+	_sprite.init(1,1, 50, 50);
 }
 
 

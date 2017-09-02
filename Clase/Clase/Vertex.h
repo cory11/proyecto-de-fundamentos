@@ -14,7 +14,7 @@ struct Vertex {
 
 	Position position;
 	Color color;
-	void setPositon(float x, float y) {
+	void setPosition(float x, float y) {
 		position.x = x;
 		position.y = y;
 	}
