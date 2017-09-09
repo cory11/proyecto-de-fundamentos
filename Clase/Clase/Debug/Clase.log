@@ -1,4 +1,5 @@
 ﻿  MainGame.cpp
-c:\users\proyecto\fundamentos\proyecto-de-fundamentos\clase\clase\maingame.cpp(56): warning C4305: '+=': truncation from 'double' to 'float'
-  Clase.vcxproj -> C:\Users\Proyecto\fundamentos\proyecto-de-fundamentos\Clase\Debug\Clase.exe
-  Clase.vcxproj -> C:\Users\Proyecto\fundamentos\proyecto-de-fundamentos\Clase\Debug\Clase.pdb (Partial PDB)
+c:\users\proyecto\semana4\proyecto-de-fundamentos\clase\clase\maingame.cpp(59): warning C4305: '+=': truncation from 'double' to 'float'
+c:\users\proyecto\semana4\proyecto-de-fundamentos\clase\clase\maingame.cpp(62): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+  Clase.vcxproj -> C:\Users\Proyecto\semana4\proyecto-de-fundamentos\Clase\Debug\Clase.exe
+  Clase.vcxproj -> C:\Users\Proyecto\semana4\proyecto-de-fundamentos\Clase\Debug\Clase.pdb (Partial PDB)

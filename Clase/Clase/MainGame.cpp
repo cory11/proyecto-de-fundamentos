@@ -36,6 +36,7 @@ void MainGame::initShaders(){
 		"Shaders/ColorShaderFrag.txt");
 	_program.addAttribute("vertexPosition");
 	_program.addAttribute("vertexColor");
+	_program.addAttribute("vertexUV");
 	_program.linkShader();
 }
 
@@ -51,10 +52,20 @@ void MainGame::draw(){
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
 	_program.use();
+
+	glActiveTexture(GL_TEXTURE0);
 	GLuint timeLocation = _program.getUniformLocation("time");
 	glUniform1f(timeLocation, _time);
 	_time += 0.0002;
-	_sprite.draw();
+
+	GLuint imageLocation = _program.getUniformLocation("image");
+	glUniform1i(imageLocation, _time);
+
+	for (size_t i = 0; i < _sprites.size(); i++)
+	{
+		_sprites[i]->draw();
+	}
+	//_sprite.draw();
 	_program.unuse();
 
 	//draw elements
@@ -77,7 +88,11 @@ void MainGame::processInput() {
 
 void MainGame::run() {
 	init();
-	_sprite.init(-1, -1, 1, 1);
+	_sprites.push_back(new Sprite());
+	_sprites.back()->init(-1, -1, 1, 1, "images/imagen.png");
+	_sprites.push_back(new Sprite());
+	_sprites.back()->init(0, -1, 1, 1, "images/imagen.png");
+	//_sprite.init(-1, -1, 1, 1);
 	update();	
 
 }
