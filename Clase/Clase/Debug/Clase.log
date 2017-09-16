@@ -1,8 +1,4 @@
-﻿  Window.cpp
-  MainGame.cpp
-  Generating Code...
-  Compiling...
-  main.cpp
-  Generating Code...
+﻿  MainGame.cpp
+c:\users\proyecto\clase4\proyecto-de-fundamentos\clase\clase\maingame.cpp(93): warning C4244: 'argument': conversion from 'Sint32' to 'float', possible loss of data
   Clase.vcxproj -> C:\Users\Proyecto\clase4\proyecto-de-fundamentos\Clase\Debug\Clase.exe
   Clase.vcxproj -> C:\Users\Proyecto\clase4\proyecto-de-fundamentos\Clase\Debug\Clase.pdb (Partial PDB)

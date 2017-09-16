@@ -26,6 +26,7 @@ void MainGame::initShaders(){
 void MainGame::update(){
 	while (_gameState != GameState::EXIT) {
 		draw();
+		_camera2D.update();
 		processInput();
 	}
 }
@@ -55,18 +56,51 @@ void MainGame::draw(){
 	_window.swapWindow();
 }
 
+void MainGame::handleInput() {
+	if (_inputManager.isKeyPressed(SDLK_w)) {
+		_camera2D.setPosition(_camera2D.getPosition() + glm::vec2(0.0, -CAMERA_SPEED));
+	}
+
+	if (_inputManager.isKeyPressed(SDLK_s)) {
+		_camera2D.setPosition(_camera2D.getPosition() + glm::vec2(0.0, CAMERA_SPEED));
+	}
+
+	if (_inputManager.isKeyPressed(SDLK_a)) {
+		_camera2D.setPosition(_camera2D.getPosition() + glm::vec2(CAMERA_SPEED, 0.0));
+	}
+
+	if (_inputManager.isKeyPressed(SDLK_d)) {
+		_camera2D.setPosition(_camera2D.getPosition() + glm::vec2(-CAMERA_SPEED, 0.0));
+	}
+
+	if (_inputManager.isKeyPressed(SDLK_q)) {}
+
+	if (_inputManager.isKeyPressed(SDLK_e)) {}
+
+}
+
 void MainGame::processInput() {
 	SDL_Event event;
-	while (SDL_PollEvent(&event)) {
-		switch (event.type) {
+	while(SDL_PollEvent(&event))
+	{
+		switch(event.type)
+		{
 			case SDL_QUIT:
 				_gameState = GameState::EXIT;
-			case SDL_MOUSEMOTION:
-				cout << "x:"<< event.motion.x << "y:"<< event.motion.y << endl;
+				break;
 
+			case SDL_MOUSEMOTION:
+				_inputManager.setMouseCoords(event.motion.x, event.motion.y);
+				break;
+			case SDL_KEYDOWN:
+				_inputManager.pressKey(event.key.keysym.sym);
+				break;
+			case SDL_KEYUP:
+				_inputManager.releaseKey(event.key.keysym.sym);
 				break;
 		}
 	}
+	handleInput();
 }
 
 void MainGame::run() {

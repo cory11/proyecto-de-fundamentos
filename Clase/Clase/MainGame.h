@@ -5,6 +5,9 @@
 #include "GLS_Program.h"
 #include "Window.h"
 #include <vector>
+#include "Camera2D.h"
+#include "InputManager.h"
+
 using namespace std;
 enum class GameState {
 
@@ -20,10 +23,20 @@ private:
 	//Sprite _sprite;
 	void init();
 	vector<Sprite*> _sprites;
+	Camera2D _camera2D;
+	InputManager _inputManager;
 	GLS_Program _program;
+
+
 	void initShaders();
 	//SDL_Window* _window;
+
+	
 	void processInput();
+	void handleInput();
+	const float CAMERA_SPEED = 0.05f;
+	const float SCALE_SPEED = 0.1f;
+
 public:
 	MainGame();
 	~MainGame();
