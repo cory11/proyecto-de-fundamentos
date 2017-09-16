@@ -14,7 +14,7 @@ Sprite::Sprite()
 
 
 
-void Sprite::init(int width, int height,float x,float y, string texturePath)
+void Sprite::init(float x, float y, int width, int height, string texturePath)
 {
 	_x = x;
 	_y = y;

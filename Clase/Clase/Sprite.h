@@ -15,10 +15,7 @@ private:
 public:
 	Sprite();
 	~Sprite();
-	void init(int width,
-				int height,
-				float x,
-				float y,
+	void init(float x, float y, int width, int height,
 				string texturePath);
 	void draw();
 };

@@ -4,30 +4,13 @@
 using namespace std;
 
 
-MainGame::MainGame() : _window(nullptr), _width(800), _height(800), _gameState(GameState::PLAY), _time(0)
+MainGame::MainGame() :  _width(800), _height(800), _gameState(GameState::PLAY), _time(0)
 {
 }
 
 void MainGame::init() {
 	SDL_Init(SDL_INIT_EVERYTHING);
-	_window = SDL_CreateWindow("Hola", SDL_WINDOWPOS_CENTERED,
-		SDL_WINDOWPOS_CENTERED, _width, _height, SDL_WINDOW_OPENGL);
-
-
-	if (_window == nullptr) {
-		fatalError("SDL_Window was not loaded");
-	}
-
-
-	SDL_GLContext glContext = SDL_GL_CreateContext(_window);
-	GLenum error = glewInit();
-
-	if (error != GLEW_OK) {
-		fatalError("GLEW was not loaded");
-	}
-
-	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-	glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
+	_window.create("Hola :D", _width, _height, 0);
 	initShaders();
 }
 
@@ -56,10 +39,10 @@ void MainGame::draw(){
 	glActiveTexture(GL_TEXTURE0);
 	GLuint timeLocation = _program.getUniformLocation("time");
 	glUniform1f(timeLocation, _time);
-	_time += 0.0002;
+	_time += 0.0002f;
 
 	GLuint imageLocation = _program.getUniformLocation("image");
-	glUniform1i(imageLocation, _time);
+	glUniform1i(imageLocation, 0);
 
 	for (size_t i = 0; i < _sprites.size(); i++)
 	{
@@ -69,7 +52,7 @@ void MainGame::draw(){
 	_program.unuse();
 
 	//draw elements
-	SDL_GL_SwapWindow(_window);
+	_window.swapWindow();
 }
 
 void MainGame::processInput() {

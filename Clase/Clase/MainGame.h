@@ -3,6 +3,7 @@
 #include <glew/glew.h>
 #include "Sprite.h"
 #include "GLS_Program.h"
+#include "Window.h"
 #include <vector>
 using namespace std;
 enum class GameState {
@@ -15,12 +16,13 @@ private:
 	int _width;
 	int _height;
 	float _time;
+	Window _window;
 	//Sprite _sprite;
 	void init();
 	vector<Sprite*> _sprites;
 	GLS_Program _program;
 	void initShaders();
-	SDL_Window* _window;
+	//SDL_Window* _window;
 	void processInput();
 public:
 	MainGame();
