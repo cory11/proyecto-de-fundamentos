@@ -1,15 +1,19 @@
 #include "MainGame.h"
 #include <iostream>
+#include "Engine.h"
 #include "Error.h"
+
 using namespace std;
 
+using namespace Papu;
 
 MainGame::MainGame() :  _width(800), _height(800), _gameState(GameState::PLAY), _time(0)
 {
+	_camera2D.init(_width, _height);
 }
 
 void MainGame::init() {
-	SDL_Init(SDL_INIT_EVERYTHING);
+	Papu::init();
 	_window.create("Hola :D", _width, _height, 0);
 	initShaders();
 }
@@ -45,6 +49,12 @@ void MainGame::draw(){
 	GLuint imageLocation = _program.getUniformLocation("image");
 	glUniform1i(imageLocation, 0);
 
+	GLuint pLocation = _program.getUniformLocation("P");
+
+	glm::mat4 cameraMatrix = _camera2D.getCameraMatrix();
+	glUniformMatrix4fv(pLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
+
+
 	for (size_t i = 0; i < _sprites.size(); i++)
 	{
 		_sprites[i]->draw();
@@ -73,9 +83,13 @@ void MainGame::handleInput() {
 		_camera2D.setPosition(_camera2D.getPosition() + glm::vec2(-CAMERA_SPEED, 0.0));
 	}
 
-	if (_inputManager.isKeyPressed(SDLK_q)) {}
+	if (_inputManager.isKeyPressed(SDLK_q)) {
+		_camera2D.setScale(_camera2D.getScale() + SCALE_SPEED);
+	}
 
-	if (_inputManager.isKeyPressed(SDLK_e)) {}
+	if (_inputManager.isKeyPressed(SDLK_e)) {
+		_camera2D.setScale(_camera2D.getScale() - SCALE_SPEED);
+	}
 
 }
 
@@ -105,10 +119,13 @@ void MainGame::processInput() {
 
 void MainGame::run() {
 	init();
+
+	//_sprites.push_back(new Sprite());
+
 	_sprites.push_back(new Sprite());
-	_sprites.back()->init(-1, -1, 1, 1, "images/imagen.png");
+	_sprites.back()->init(0.0f, 0.0f, _width/2, _height/2, "images/imagen.png");
 	_sprites.push_back(new Sprite());
-	_sprites.back()->init(0, -1, 1, 1, "images/imagen.png");
+	_sprites.back()->init(_width / 2, _height / 2, _width / 2, _height / 2, "images/imagen.png");
 	//_sprite.init(-1, -1, 1, 1);
 	update();	
 

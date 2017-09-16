@@ -1,4 +1,11 @@
 ﻿  MainGame.cpp
-c:\users\proyecto\clase4\proyecto-de-fundamentos\clase\clase\maingame.cpp(93): warning C4244: 'argument': conversion from 'Sint32' to 'float', possible loss of data
-  Clase.vcxproj -> C:\Users\Proyecto\clase4\proyecto-de-fundamentos\Clase\Debug\Clase.exe
-  Clase.vcxproj -> C:\Users\Proyecto\clase4\proyecto-de-fundamentos\Clase\Debug\Clase.pdb (Partial PDB)
+c:\users\proyecto\semana5\proyecto-de-fundamentos\clase\clase\maingame.cpp(107): warning C4244: 'argument': conversion from 'Sint32' to 'float', possible loss of data
+c:\users\proyecto\semana5\proyecto-de-fundamentos\clase\clase\maingame.cpp(128): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+  Compiling...
+  Camera2D.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  main.cpp
+  Clase.vcxproj -> C:\Users\Proyecto\semana5\proyecto-de-fundamentos\Clase\Debug\Clase.exe
+  Clase.vcxproj -> C:\Users\Proyecto\semana5\proyecto-de-fundamentos\Clase\Debug\Clase.pdb (Partial PDB)

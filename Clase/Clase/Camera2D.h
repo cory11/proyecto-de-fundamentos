@@ -44,6 +44,6 @@ public:
 		return _position;
 	}
 
-	float scale() { return _scale; }
+	float getScale() { return _scale; }
 };
 
