@@ -5,7 +5,7 @@
 #include <vector>
 
 
-enum class GlyphShortType {
+enum class GlyphSortType {
 	NONE,
 	FRONT_TO_BACK,
 	BACK_TO_FRONT,
@@ -23,6 +23,7 @@ struct Glyph {
 };
 
 class RenderBatch {
+public:
 	RenderBatch(GLuint offset,
 		GLuint numVertixes,
 		GLuint texture);
@@ -39,11 +40,11 @@ private:
 	GLuint _vbo;
 	GLuint _vao;
 
-	std::vector<Glyph*> _glpyhs;
-	std::is_move_constructible<RenderBatch> _renderBatches;
+	std::vector<Glyph*> _glyphs;
+	std::vector<RenderBatch> _renderBatches;
 	void createVertexArray();
 	void sortGlyph();
-	GlyphShortType _sortType;
+	GlyphSortType _sortType;
 	void createRenderbatches();
 public:
 	
@@ -51,9 +52,13 @@ public:
 	~SpriteBatch();
 
 	void init();
-	void begin(GlyphShortType sortType = GlyphShortType::TEXTURE);
+	void begin(GlyphSortType sortType = GlyphSortType::TEXTURE);
 	void end();
-	void draw();
+	void draw(const glm::vec4& destRect, const glm::vec4& uvRect, GLuint texture, float depth, const Color& color);
 	void renderBatch();
+
+	bool compareFrontToBack(Glyph* a, Glyph* b);
+	bool compareBackToFront(Glyph* a, Glyph* b);
+	bool compareTexture(Glyph* a, Glyph* b);
 };
 
