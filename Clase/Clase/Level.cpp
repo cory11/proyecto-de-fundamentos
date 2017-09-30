@@ -37,7 +37,7 @@ void Level::parseLevel() {
 			switch (tile)
 			{
 			case 'R':
-				break;
+				
 			case 'B':
 				_spriteBatch.draw(destRect, uvRect, ResourceManager::getTexture("images/red_bricks.png").id, 0.0f, color);
 				break;

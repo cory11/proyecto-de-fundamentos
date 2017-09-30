@@ -17,6 +17,7 @@ void SpriteBatch::draw(const glm::vec4& destRect, const glm::vec4& uvRect, GLuin
 	Glyph* glyph = new Glyph;
 	glyph->texture = texture;
 	glyph->depth = depth;
+
 	glyph->topLeft.color = color;
 	glyph->topLeft.setPosition(destRect.x, destRect.y + destRect.w);
 	glyph->topLeft.setUV(uvRect.x, uvRect.y + uvRect.w);
@@ -33,6 +34,7 @@ void SpriteBatch::draw(const glm::vec4& destRect, const glm::vec4& uvRect, GLuin
 	glyph->topRight.setPosition(destRect.x + destRect.z, destRect.y + destRect.w);
 	glyph->topRight.setUV(uvRect.x + uvRect.z, uvRect.y + uvRect.w);
 
+	_glyphs.push_back(glyph);
 }
 
 void SpriteBatch::createVertexArray() {
@@ -47,6 +49,10 @@ void SpriteBatch::createVertexArray() {
 	}
 
 	glBindBuffer(GL_ARRAY_BUFFER, _vbo);
+
+	glEnableVertexAttribArray(0);
+	glEnableVertexAttribArray(1);
+	glEnableVertexAttribArray(2);
 
 	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, position));
 	//segundo atributo color
@@ -89,7 +95,7 @@ void SpriteBatch::createRenderbatches() {
 	vertices[cv++] = _glyphs[0]->topLeft;
 	ofset += 6;
 
-	for (size_t i = 0; i < _glyphs.size(); i++)
+	for (size_t i = 1; i < _glyphs.size(); i++)
 	{
 		if (_glyphs[i]->texture != _glyphs[i-1]->texture) {
 			_renderBatches.emplace_back(ofset, 6, _glyphs[i]->texture);
@@ -154,6 +160,9 @@ bool SpriteBatch::compareFrontToBack(Glyph* a, Glyph*b) {
 bool SpriteBatch::compareTexture(Glyph* a, Glyph*b) {
 	return (a->texture < b->texture);
 }
+
+
+
 
 RenderBatch::RenderBatch(GLuint offset, GLuint numVertixes, GLuint texture) {
 

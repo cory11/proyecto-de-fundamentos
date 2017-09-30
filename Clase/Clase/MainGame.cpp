@@ -54,6 +54,10 @@ void MainGame::draw(){
 	glm::mat4 cameraMatrix = _camera2D.getCameraMatrix();
 	glUniformMatrix4fv(pLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
 
+	_spriteBacth.begin();
+	_levels[_currentLevel]->draw();
+	_spriteBacth.end();
+	_spriteBacth.renderBatch();
 
 	//for (size_t i = 0; i < _sprites.size(); i++)
 	//{
@@ -121,7 +125,8 @@ void MainGame::run() {
 	init();
 
 	_levels.push_back(new Level("levels/level1.txt"));
-
+	_currentLevel = 0;
+	_spriteBacth.init();
 	//_sprites.push_back(new Sprite());
 
 	//_sprites.push_back(new Sprite());
