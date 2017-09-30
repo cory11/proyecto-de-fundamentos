@@ -1,26 +1,5 @@
-﻿  Window.cpp
-  TextureCache.cpp
-  SpriteBatch.cpp
-  Sprite.cpp
-  ResourceManager.cpp
-  picoPNG.cpp
-  MainGame.cpp
-c:\users\proyecto\clase6\proyecto-de-fundamentos\clase\clase\maingame.cpp(107): warning C4244: 'argument': conversion from 'Sint32' to 'float', possible loss of data
-c:\users\proyecto\clase6\proyecto-de-fundamentos\clase\clase\maingame.cpp(128): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  main.cpp
-  Level.cpp
-  IOManager.cpp
-c:\users\proyecto\clase6\proyecto-de-fundamentos\clase\clase\iomanager.cpp(13): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
-c:\users\proyecto\clase6\proyecto-de-fundamentos\clase\clase\iomanager.cpp(17): warning C4244: '-=': conversion from 'std::streamoff' to 'int', possible loss of data
-  InputManager.cpp
-  ImageLoader.cpp
-c:\users\proyecto\clase6\proyecto-de-fundamentos\clase\clase\imageloader.cpp(34): warning C4244: '=': conversion from 'unsigned long' to 'float', possible loss of data
-c:\users\proyecto\clase6\proyecto-de-fundamentos\clase\clase\imageloader.cpp(35): warning C4244: '=': conversion from 'unsigned long' to 'float', possible loss of data
-  GLS_Program.cpp
-  Error.cpp
-  Engine.cpp
-  Camera2D.cpp
-  Generating Code...
-  LINK : C:\Users\Proyecto\clase6\proyecto-de-fundamentos\Clase\Debug\Clase.exe not found or not built by the last incremental link; performing full link
-  Clase.vcxproj -> C:\Users\Proyecto\clase6\proyecto-de-fundamentos\Clase\Debug\Clase.exe
-  Clase.vcxproj -> C:\Users\Proyecto\clase6\proyecto-de-fundamentos\Clase\Debug\Clase.pdb (Partial PDB)
+﻿  Level.cpp
+c:\users\proyecto\clase7d1\proyecto-de-fundamentos\clase\clase\level.cpp(53): warning C4244: '=': conversion from 'std::size_t' to 'float', possible loss of data
+c:\users\proyecto\clase7d1\proyecto-de-fundamentos\clase\clase\level.cpp(54): warning C4244: '=': conversion from 'std::size_t' to 'float', possible loss of data
+  Clase.vcxproj -> C:\Users\Proyecto\clase7d1\proyecto-de-fundamentos\Clase\Debug\Clase.exe
+  Clase.vcxproj -> C:\Users\Proyecto\clase7d1\proyecto-de-fundamentos\Clase\Debug\Clase.pdb (Partial PDB)

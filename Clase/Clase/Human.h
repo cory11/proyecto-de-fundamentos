@@ -1,7 +1,10 @@
 #pragma once
-class Human
+#include "Agent.h"
+
+class Human : public Agent
 {
 public:
+	
 	Human();
 	~Human();
 };

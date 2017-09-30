@@ -7,6 +7,12 @@
 #include <vector>
 #include "Camera2D.h"
 #include "InputManager.h"
+#include "SpriteBatch.h"
+#include "Human.h"
+#include "Zombie.h"
+#include "Level.h"
+#include "Player.h"
+
 
 using namespace std;
 enum class GameState {
@@ -22,11 +28,18 @@ private:
 	Window _window;
 	//Sprite _sprite;
 	void init();
-	vector<Sprite*> _sprites;
+	//vector<Sprite*> _sprites;
 	Camera2D _camera2D;
 	InputManager _inputManager;
 	GLS_Program _program;
 
+	vector<Level*> _levels;
+	vector<Human*> _humans;
+	vector<Zombie*> _zombies;
+	Player* _player;
+
+
+	
 
 	void initShaders();
 	//SDL_Window* _window;

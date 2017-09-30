@@ -55,10 +55,10 @@ void MainGame::draw(){
 	glUniformMatrix4fv(pLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
 
 
-	for (size_t i = 0; i < _sprites.size(); i++)
-	{
-		_sprites[i]->draw();
-	}
+	//for (size_t i = 0; i < _sprites.size(); i++)
+	//{
+	//	_sprites[i]->draw();
+	//}
 	//_sprite.draw();
 	_program.unuse();
 
@@ -120,12 +120,14 @@ void MainGame::processInput() {
 void MainGame::run() {
 	init();
 
+	_levels.push_back(new Level("levels/level1.txt"));
+
 	//_sprites.push_back(new Sprite());
 
-	_sprites.push_back(new Sprite());
-	_sprites.back()->init(0.0f, 0.0f, _width/2, _height/2, "images/imagen.png");
-	_sprites.push_back(new Sprite());
-	_sprites.back()->init(_width / 2, _height / 2, _width / 2, _height / 2, "images/imagen.png");
+	//_sprites.push_back(new Sprite());
+	//_sprites.back()->init(0.0f, 0.0f, _width/2, _height/2, "images/imagen.png");
+	//_sprites.push_back(new Sprite());
+	//_sprites.back()->init(_width / 2, _height / 2, _width / 2, _height / 2, "images/imagen.png");
 	//_sprite.init(-1, -1, 1, 1);
 	update();	
 

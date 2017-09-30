@@ -5,7 +5,7 @@
 #include <glm\glm.hpp>
 
 using namespace std;
-const int TITTLE_WIDTH = 64;
+const int TITLE_WIDTH = 64;
 
 class Level
 {
